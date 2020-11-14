@@ -3,20 +3,17 @@ require "functions.php";
 
 // cek apakah tombol submit sudah ditekan
 if (isset($_POST["submit"])) {
-  // ambil data dari tiap element form
-  $nama = $_POST["nama"];
-  $tgl_lahir = $_POST["tgl_lahir"];
-  $alamat = $_POST["alamat"];
-  $nama_ayah = $_POST["nama_ayah"];
-  $nama_ibu = $_POST["nama_ibu"];
-  $img_santri = $_POST["foto"];
 
-  // query insert data
-  $query = "INSERT INTO tb_santri 
-            VALUES
-            (null, '$nama', '$alamat', '$tgl_lahir', '$nama_ayah', '$nama_ibu', '$img_santri')
-            ";
-  mysqli_query($conn, $query);
+  if (tambah($_POST) > 0) {
+    echo "<script>
+            alert('Data berhasil disimpan')
+            document.location.href = 'index.php'
+          </script>";
+  } else {
+    echo "<script>
+            alert('Data gagal disimpan')
+          </script>";
+  }
 };
 
 ?>
@@ -38,27 +35,27 @@ if (isset($_POST["submit"])) {
     <form action="" method="POST">
       <div class="form-group">
         <label for="nama"> Nama </label>
-        <input placeholder="Masukan Nama" class="form-control" type="text" id="nama" name="nama">
+        <input placeholder="Contoh: Budi" class="form-control" type="text" id="nama" name="nama" required>
       </div>
       <div class="form-group">
         <label for="tgl_lahir">Tanggal Lahir </label>
-        <input placeholder="YYYY-MM-DD" class="form-control" type="text" id="tgl_lahir" name="tgl_lahir">
+        <input placeholder="Contoh: 2002-05-03" pattern="(?:19|20)(?:(?:[13579][26]|[02468][048])-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))|(?:[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:29|30))|(?:(?:0[13578]|1[02])-31)))" class="form-control" type="text" id="tgl_lahir" name="tgl_lahir" required>
       </div>
       <div class="form-group">
         <label for="alamat">Alamat </label>
-        <input placeholder="Masukan Alamat" class="form-control" type="text" id="alamat" name="alamat">
+        <input placeholder="Contoh: Jl. Pelajar Timur, Gg. Kelapa, Lrg. Gabe, No. 9" class="form-control" type="text" id="alamat" name="alamat" required>
       </div>
       <div class="form-group">
         <label for="nama_ayah">Nama Ayah </label>
-        <input placeholder="Masukan Nama Ayah" class="form-control" type="text" id="nama_ayah" name="nama_ayah">
+        <input placeholder="Contoh: Ayah Budi" class="form-control" type="text" id="nama_ayah" name="nama_ayah" required>
       </div>
       <div class="form-group">
         <label for="nama_ibu">Nama Ibu </label>
-        <input placeholder="Masukan Nama Ibu" class="form-control" type="text" id="nama_ibu" name="nama_ibu">
+        <input placeholder="Contoh: Ibu Budi" class="form-control" type="text" id="nama_ibu" name="nama_ibu" required>
       </div>
       <div class="form-group">
         <label for="img_santri">Foto </label>
-        <input placeholder="contoh.png" class="form-control" type="text" id="img_santri" name="foto">
+        <input placeholder="Contoh: contoh.png" class="form-control" type="text" id="img_santri" name="foto">
       </div>
       <button type="submit" name="submit" class="btn btn-primary">Tambah</button>
     </form>

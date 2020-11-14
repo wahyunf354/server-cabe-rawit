@@ -1,6 +1,7 @@
 <?php
 require "functions.php";
 $santri = query("SELECT * FROM tb_santri");
+
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +41,7 @@ $santri = query("SELECT * FROM tb_santri");
             <td> <?= $i; ?> </td>
             <td>
               <a class="btn btn-success btn-sm" href=""> <i class="fa fa-edit"></i> </a>
-              <a class="btn btn-danger btn-sm" href=""> <i class="fa fa-trash"></i> </a>
+              <a class="btn btn-danger btn-sm" href="hapus.php?id=<?= $row["id_santri"] ?>"> <i class="fa fa-trash"></i> </a>
             </td>
             <td>
               <img src="img/<?= $row["img_santri"] ?>" alt="img" class="img-thumbnail rounded" style="width: 75px; height: 75px; ">
