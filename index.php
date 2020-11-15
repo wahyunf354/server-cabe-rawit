@@ -40,7 +40,7 @@ $santri = query("SELECT * FROM tb_santri");
           <tr>
             <td> <?= $i; ?> </td>
             <td>
-              <a class="btn btn-success btn-sm" href=""> <i class="fa fa-edit"></i> </a>
+              <a class="btn btn-success btn-sm" href="ubah.php?id=<?= $row["id_santri"] ?>"> <i class="fa fa-edit"></i> </a>
               <a class="btn btn-danger btn-sm" href="hapus.php?id=<?= $row["id_santri"] ?>"> <i class="fa fa-trash"></i> </a>
             </td>
             <td>

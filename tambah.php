@@ -3,7 +3,6 @@ require "functions.php";
 
 // cek apakah tombol submit sudah ditekan
 if (isset($_POST["submit"])) {
-
   if (tambah($_POST) > 0) {
     echo "<script>
             alert('Data berhasil disimpan')
