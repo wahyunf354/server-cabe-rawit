@@ -1,6 +1,10 @@
 <?php
 require "functions.php";
-$santri = query("SELECT * FROM tb_santri");
+$santri = query("SELECT * FROM tb_santri ORDER BY id_santri DESC");
+
+if (isset($_POST['cari'])) {
+  $santri = cari($_POST["keyword"]);
+}
 
 ?>
 
@@ -21,6 +25,15 @@ $santri = query("SELECT * FROM tb_santri");
   <div class="container pt-3">
     <h1 class="text-center">Daftar Cabe Rawit</h1>
     <a class="btn btn-primary btn-sm mb-2" href="tambah.php">Tambah Data Cabe Rawit</a>
+
+    <form class="form-inline" method="post" action="">
+      <div class="form-group mr-2 mb-2">
+        <label for="inputPassword2" class="sr-only"></label>
+        <input type="text" class="form-control" id="inputPassword2" name="keyword" placeholder="Cari" autofocus autocomplete="off">
+      </div>
+      <button type="submit" name="cari" class="btn btn-primary mb-2">Cari</button>
+    </form>
+
     <table class="table table-striped table-bordered">
       <thead>
         <tr>

@@ -75,3 +75,16 @@ function ubah($data)
   mysqli_query($conn, $query);
   return mysqli_affected_rows($conn);
 }
+
+function cari($keyword)
+{
+  $query = "SELECT * FROM tb_santri
+            WHERE
+            nama LIKE '%$keyword%' OR
+            alamat LIKE '%$keyword%' OR
+            nama_ayah LIKE '%$keyword%' OR
+            nama_ibu LIKE '%$keyword%' OR
+            tgl_lahir LIKE '%$keyword%'  
+            ";
+  return query($query);
+}
