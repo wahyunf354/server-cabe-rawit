@@ -3,6 +3,7 @@ require "functions.php";
 
 // cek apakah tombol submit sudah ditekan
 if (isset($_POST["submit"])) {
+
   if (tambah($_POST) > 0) {
     echo "<script>
             alert('Data berhasil disimpan')
@@ -31,7 +32,7 @@ if (isset($_POST["submit"])) {
   <div class="container pt-2">
     <h2 class="text-center">Tambah Data Cabe Rawit</h2>
 
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
       <div class="form-group">
         <label for="nama"> Nama </label>
         <input placeholder="Contoh: Budi" class="form-control" type="text" id="nama" name="nama" required>
@@ -54,7 +55,7 @@ if (isset($_POST["submit"])) {
       </div>
       <div class="form-group">
         <label for="img_santri">Foto </label>
-        <input placeholder="Contoh: contoh.png" class="form-control" type="text" id="img_santri" name="foto">
+        <input placeholder="Contoh: contoh.png" class="form-control" type="file" id="img_santri" name="foto">
       </div>
       <button type="submit" name="submit" class="btn btn-primary">Tambah</button>
     </form>

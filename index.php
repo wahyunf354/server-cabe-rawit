@@ -5,7 +5,6 @@ $santri = query("SELECT * FROM tb_santri ORDER BY id_santri DESC");
 if (isset($_POST['cari'])) {
   $santri = cari($_POST["keyword"]);
 }
-
 ?>
 
 <!DOCTYPE html>

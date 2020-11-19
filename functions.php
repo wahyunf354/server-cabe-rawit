@@ -26,7 +26,13 @@ function tambah($data)
   $alamat = htmlspecialchars($data["alamat"]);
   $nama_ayah = htmlspecialchars($data["nama_ayah"]);
   $nama_ibu = htmlspecialchars($data["nama_ibu"]);
-  $img_santri = htmlspecialchars($data["foto"]);
+
+  // upload img_santri
+  $img_santri = upload();
+
+  if (!$img_santri) {
+    return false;
+  }
 
   // query insert data
   $query = "INSERT INTO tb_santri 
@@ -36,6 +42,51 @@ function tambah($data)
   mysqli_query($conn, $query);
 
   return mysqli_affected_rows($conn);
+}
+
+function upload()
+{
+  $namaFile = $_FILES['foto']['name'];
+  $ukuranFile = $_FILES['foto']['size'];
+  $error = $_FILES['foto']['error'];
+  $tmpName = $_FILES['foto']['tmp_name'];
+
+  // cek apakah tidak ada gambar yang diupload
+  if ($error == 4) {
+    echo "<script>
+            alert('pilih gambar terlebih dahulu);
+          </script>";
+    return false;
+  }
+
+  // cek apakah yang diupload adalah gambar
+  $ektensiGambarValid = ['jpg', 'jpeg', 'png'];
+  $ektensiGambar = explode('.', $namaFile);
+  $ektensiGambar = strtolower(end($ektensiGambar));
+  if (!in_array($ektensiGambar, $ektensiGambarValid)) {
+    echo "<script>
+            alert('yang adan upload bukan gambar!');
+          </script>";
+    return false;
+  }
+
+  // cek jia ukurannya terlalu besar
+  if ($ukuranFile > 1000000) {
+    echo "<script>
+            alert('yang adan upload bukan gambar!');
+          </script>";
+    return false;
+  }
+
+  // lolos pengecekan, gambar siap diupload
+
+  // generet nama file baru
+  $namaFileBaru = uniqid();
+  $namaFileBaru .= '.';
+  $namaFileBaru .= $ektensiGambar;
+
+  move_uploaded_file($tmpName, 'img/' . $namaFileBaru);
+  return $namaFileBaru;
 }
 
 
