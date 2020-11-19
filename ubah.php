@@ -43,7 +43,7 @@ if (isset($_POST["submit"])) {
       <input type="hidden" name="id_santri" value="<?= $mhs["id_santri"] ?>">
       <div class="form-group">
         <label for="nama"> Nama </label>
-        <input placeholder="Contoh: Budi" class="form-control" type="text" id="nama" name="nama" required value="<?= $mhs["nama"] ?>">
+        <input placeholder="Contoh: Budi" class="form-control" type="text" id="nama" name="nama" required value="<?= $mhs["nama_santri"] ?>">
       </div>
       <div class="form-group">
         <label for="tgl_lahir">Tanggal Lahir </label>

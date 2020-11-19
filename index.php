@@ -58,7 +58,7 @@ if (isset($_POST['cari'])) {
             <td>
               <img src="img/<?= $row["img_santri"] ?>" alt="img" class="img-thumbnail rounded" style="width: 75px; height: 75px; ">
             </td>
-            <td> <?= $row["nama"] ?> </td>
+            <td> <?= $row["nama_santri"] ?> </td>
             <td> <?= $row["tgl_lahir"] ?> </td>
             <td> <?= $row["alamat"] ?> </td>
             <td> <?= $row["nama_ayah"] ?> </td>

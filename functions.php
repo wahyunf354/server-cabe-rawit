@@ -131,7 +131,7 @@ function cari($keyword)
 {
   $query = "SELECT * FROM tb_santri
             WHERE
-            nama LIKE '%$keyword%' OR
+            nama_santri LIKE '%$keyword%' OR
             alamat LIKE '%$keyword%' OR
             nama_ayah LIKE '%$keyword%' OR
             nama_ibu LIKE '%$keyword%' OR
