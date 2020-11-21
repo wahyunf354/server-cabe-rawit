@@ -1,6 +1,6 @@
 <?php
 // korneksi ke database
-$conn = mysqli_connect("localhost", "root", "", "db_cabe_rawit");
+$conn = mysqli_connect("localhost", "wahyu", "wahyu", "db_cabe_rawit");
 
 
 function query($query)
